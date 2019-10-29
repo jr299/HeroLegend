@@ -1,0 +1,252 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resources">
+      <UniqueIdentifier>{b49132b9-e573-4baf-bfa2-f3839b17d04b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resources\AI">
+      <UniqueIdentifier>{ea8cd89d-d455-4997-a087-5445d12fd371}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resources\AI\BIG">
+      <UniqueIdentifier>{5b6298ec-a00c-4fa1-bcc1-c24124f16da3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resources\AI\MEDIUM">
+      <UniqueIdentifier>{855fb2cb-f19c-4918-b114-68b713dd3cd3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resources\AI\SMALL">
+      <UniqueIdentifier>{4471f777-568a-4be8-b514-db1fb0e636e4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resources\Player">
+      <UniqueIdentifier>{69e324c1-d486-4f4d-880a-3c63b678ff85}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resources\Player\BIG">
+      <UniqueIdentifier>{7bbb0fd9-4e20-44bb-9efa-e8e1f3b9778f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resources\Player\MEDIUM">
+      <UniqueIdentifier>{d59c5d42-5707-45dc-8766-6f7c83962365}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resources\Player\SMALL">
+      <UniqueIdentifier>{a742418e-50a3-4482-bb40-76f82a69a0a6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resources\Fonts">
+      <UniqueIdentifier>{56761beb-b010-468a-94c7-eb6f7e592678}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Main.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="CharacterManager.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="AICharacter.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="SceneManager.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Player.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="BackGroup.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Define.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="CharacterManager.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="AICharacter.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="SceneManager.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Player.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="BackGroup.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="..\Resources\Data\AIPut.png">
+      <Filter>Resources</Filter>
+    </Image>
+    <Image Include="..\Resources\Data\map.png">
+      <Filter>Resources</Filter>
+    </Image>
+    <Image Include="..\Resources\Data\PlayBttNormal.png">
+      <Filter>Resources</Filter>
+    </Image>
+    <Image Include="..\Resources\Data\PlayBttPressing.png">
+      <Filter>Resources</Filter>
+    </Image>
+    <Image Include="..\Resources\Data\PlayerPut.png">
+      <Filter>Resources</Filter>
+    </Image>
+    <Image Include="..\Resources\Data\Powerup.png">
+      <Filter>Resources</Filter>
+    </Image>
+    <Image Include="..\Resources\Data\AI\BIG\player_full_11 (Custom).png">
+      <Filter>Resources\AI\BIG</Filter>
+    </Image>
+    <Image Include="..\Resources\Data\AI\BIG\player_full_12 (Custom).png">
+      <Filter>Resources\AI\BIG</Filter>
+    </Image>
+    <Image Include="..\Resources\Data\AI\BIG\player_full_13 (Custom).png">
+      <Filter>Resources\AI\BIG</Filter>
+    </Image>
+    <Image Include="..\Resources\Data\AI\BIG\player_full_14 (Custom).png">
+      <Filter>Resources\AI\BIG</Filter>
+    </Image>
+    <Image Include="..\Resources\Data\AI\BIG\player_full_15 (Custom).png">
+      <Filter>Resources\AI\BIG</Filter>
+    </Image>
+    <Image Include="..\Resources\Data\AI\BIG\player_full_16 (Custom).png">
+      <Filter>Resources\AI\BIG</Filter>
+    </Image>
+    <Image Include="..\Resources\Data\AI\BIG\player_full_17 (Custom).png">
+      <Filter>Resources\AI\BIG</Filter>
+    </Image>
+    <Image Include="..\Resources\Data\AI\MEDIUM\player_full_11.png">
+      <Filter>Resources\AI\MEDIUM</Filter>
+    </Image>
+    <Image Include="..\Resources\Data\AI\MEDIUM\player_full_12.png">
+      <Filter>Resources\AI\MEDIUM</Filter>
+    </Image>
+    <Image Include="..\Resources\Data\AI\MEDIUM\player_full_13.png">
+      <Filter>Resources\AI\MEDIUM</Filter>
+    </Image>
+    <Image Include="..\Resources\Data\AI\MEDIUM\player_full_14.png">
+      <Filter>Resources\AI\MEDIUM</Filter>
+    </Image>
+    <Image Include="..\Resources\Data\AI\MEDIUM\player_full_15.png">
+      <Filter>Resources\AI\MEDIUM</Filter>
+    </Image>
+    <Image Include="..\Resources\Data\AI\MEDIUM\player_full_16.png">
+      <Filter>Resources\AI\MEDIUM</Filter>
+    </Image>
+    <Image Include="..\Resources\Data\AI\MEDIUM\player_full_17.png">
+      <Filter>Resources\AI\MEDIUM</Filter>
+    </Image>
+    <Image Include="..\Resources\Data\AI\SMALL\player_full_11.png">
+      <Filter>Resources\AI\SMALL</Filter>
+    </Image>
+    <Image Include="..\Resources\Data\AI\SMALL\player_full_12.png">
+      <Filter>Resources\AI\SMALL</Filter>
+    </Image>
+    <Image Include="..\Resources\Data\AI\SMALL\player_full_13.png">
+      <Filter>Resources\AI\SMALL</Filter>
+    </Image>
+    <Image Include="..\Resources\Data\AI\SMALL\player_full_14.png">
+      <Filter>Resources\AI\SMALL</Filter>
+    </Image>
+    <Image Include="..\Resources\Data\AI\SMALL\player_full_15.png">
+      <Filter>Resources\AI\SMALL</Filter>
+    </Image>
+    <Image Include="..\Resources\Data\AI\SMALL\player_full_16.png">
+      <Filter>Resources\AI\SMALL</Filter>
+    </Image>
+    <Image Include="..\Resources\Data\AI\SMALL\player_full_17.png">
+      <Filter>Resources\AI\SMALL</Filter>
+    </Image>
+    <Image Include="..\Resources\Data\Player\BIG\player_full_49 (Custom).png">
+      <Filter>Resources\Player\BIG</Filter>
+    </Image>
+    <Image Include="..\Resources\Data\Player\BIG\player_full_50 (Custom).png">
+      <Filter>Resources\Player\BIG</Filter>
+    </Image>
+    <Image Include="..\Resources\Data\Player\BIG\player_full_51 (Custom).png">
+      <Filter>Resources\Player\BIG</Filter>
+    </Image>
+    <Image Include="..\Resources\Data\Player\BIG\player_full_52 (Custom).png">
+      <Filter>Resources\Player\BIG</Filter>
+    </Image>
+    <Image Include="..\Resources\Data\Player\BIG\player_full_53 (Custom).png">
+      <Filter>Resources\Player\BIG</Filter>
+    </Image>
+    <Image Include="..\Resources\Data\Player\BIG\player_full_54 (Custom).png">
+      <Filter>Resources\Player\BIG</Filter>
+    </Image>
+    <Image Include="..\Resources\Data\Player\BIG\player_full_55 (Custom).png">
+      <Filter>Resources\Player\BIG</Filter>
+    </Image>
+    <Image Include="..\Resources\Data\Player\BIG\player_full_56 (Custom).png">
+      <Filter>Resources\Player\BIG</Filter>
+    </Image>
+    <Image Include="..\Resources\Data\Player\MEDIUM\player_full_49.png">
+      <Filter>Resources\Player\MEDIUM</Filter>
+    </Image>
+    <Image Include="..\Resources\Data\Player\MEDIUM\player_full_50.png">
+      <Filter>Resources\Player\MEDIUM</Filter>
+    </Image>
+    <Image Include="..\Resources\Data\Player\MEDIUM\player_full_51.png">
+      <Filter>Resources\Player\MEDIUM</Filter>
+    </Image>
+    <Image Include="..\Resources\Data\Player\MEDIUM\player_full_52.png">
+      <Filter>Resources\Player\MEDIUM</Filter>
+    </Image>
+    <Image Include="..\Resources\Data\Player\MEDIUM\player_full_53.png">
+      <Filter>Resources\Player\MEDIUM</Filter>
+    </Image>
+    <Image Include="..\Resources\Data\Player\MEDIUM\player_full_54.png">
+      <Filter>Resources\Player\MEDIUM</Filter>
+    </Image>
+    <Image Include="..\Resources\Data\Player\MEDIUM\player_full_55.png">
+      <Filter>Resources\Player\MEDIUM</Filter>
+    </Image>
+    <Image Include="..\Resources\Data\Player\MEDIUM\player_full_56.png">
+      <Filter>Resources\Player\MEDIUM</Filter>
+    </Image>
+    <Image Include="..\Resources\Data\Player\SMALL\player_full_49.png">
+      <Filter>Resources\Player\SMALL</Filter>
+    </Image>
+    <Image Include="..\Resources\Data\Player\SMALL\player_full_50.png">
+      <Filter>Resources\Player\SMALL</Filter>
+    </Image>
+    <Image Include="..\Resources\Data\Player\SMALL\player_full_51.png">
+      <Filter>Resources\Player\SMALL</Filter>
+    </Image>
+    <Image Include="..\Resources\Data\Player\SMALL\player_full_52.png">
+      <Filter>Resources\Player\SMALL</Filter>
+    </Image>
+    <Image Include="..\Resources\Data\Player\SMALL\player_full_53.png">
+      <Filter>Resources\Player\SMALL</Filter>
+    </Image>
+    <Image Include="..\Resources\Data\Player\SMALL\player_full_54.png">
+      <Filter>Resources\Player\SMALL</Filter>
+    </Image>
+    <Image Include="..\Resources\Data\Player\SMALL\player_full_55.png">
+      <Filter>Resources\Player\SMALL</Filter>
+    </Image>
+    <Image Include="..\Resources\Data\Player\SMALL\player_full_56.png">
+      <Filter>Resources\Player\SMALL</Filter>
+    </Image>
+    <Image Include="..\Resources\Data\Fonts\font.png">
+      <Filter>Resources\Fonts</Filter>
+    </Image>
+    <Image Include="..\Resources\Data\Fonts\fontPolygon.png">
+      <Filter>Resources\Fonts</Filter>
+    </Image>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\Resources\Data\Fonts\font.fnt">
+      <Filter>Resources\Fonts</Filter>
+    </None>
+    <None Include="..\Resources\Data\Fonts\fontPolygon.fnt">
+      <Filter>Resources\Fonts</Filter>
+    </None>
+  </ItemGroup>
+</Project>

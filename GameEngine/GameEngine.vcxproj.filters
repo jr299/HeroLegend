@@ -1,0 +1,112 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Base">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="Geometry">
+      <UniqueIdentifier>{cd244ab0-08a7-4123-9c05-60a5d3d710b8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game">
+      <UniqueIdentifier>{c145fabb-7e7d-48b9-93da-57ab68411511}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\Core">
+      <UniqueIdentifier>{140e8b53-f73b-478d-9d78-cc0635158a89}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Device">
+      <UniqueIdentifier>{a449d868-fae3-4595-aefd-df34343afde2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Device\Input">
+      <UniqueIdentifier>{33506539-92cd-4a59-a47a-f94e6adfab17}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="GameConfig.h">
+      <Filter>Base</Filter>
+    </ClInclude>
+    <ClInclude Include="Geometry.h">
+      <Filter>Geometry</Filter>
+    </ClInclude>
+    <ClInclude Include="GameTime.h">
+      <Filter>Game\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="Device.h">
+      <Filter>Device</Filter>
+    </ClInclude>
+    <ClInclude Include="Graphics.h">
+      <Filter>Device</Filter>
+    </ClInclude>
+    <ClInclude Include="Image.h">
+      <Filter>Device</Filter>
+    </ClInclude>
+    <ClInclude Include="Logger.h">
+      <Filter>Device</Filter>
+    </ClInclude>
+    <ClInclude Include="Shader.h">
+      <Filter>Device</Filter>
+    </ClInclude>
+    <ClInclude Include="InputManager.h">
+      <Filter>Device\Input</Filter>
+    </ClInclude>
+    <ClInclude Include="GameEngine.h">
+      <Filter>Base</Filter>
+    </ClInclude>
+    <ClInclude Include="Animation.h">
+      <Filter>Device</Filter>
+    </ClInclude>
+    <ClInclude Include="Rect.h">
+      <Filter>Device</Filter>
+    </ClInclude>
+    <ClInclude Include="TouchData.h">
+      <Filter>Device</Filter>
+    </ClInclude>
+    <ClInclude Include="Font.h">
+      <Filter>Device</Filter>
+    </ClInclude>
+    <ClInclude Include="UIButton.h">
+      <Filter>Device</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Geometry.cpp">
+      <Filter>Geometry</Filter>
+    </ClCompile>
+    <ClCompile Include="GameTime.cpp">
+      <Filter>Game\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="Device.cpp">
+      <Filter>Device</Filter>
+    </ClCompile>
+    <ClCompile Include="Graphics.cpp">
+      <Filter>Device</Filter>
+    </ClCompile>
+    <ClCompile Include="Image.cpp">
+      <Filter>Device</Filter>
+    </ClCompile>
+    <ClCompile Include="Logger.cpp">
+      <Filter>Device</Filter>
+    </ClCompile>
+    <ClCompile Include="Shader.cpp">
+      <Filter>Device</Filter>
+    </ClCompile>
+    <ClCompile Include="InputManager.cpp">
+      <Filter>Device\Input</Filter>
+    </ClCompile>
+    <ClCompile Include="Animation.cpp">
+      <Filter>Device</Filter>
+    </ClCompile>
+    <ClCompile Include="Rect.cpp">
+      <Filter>Device</Filter>
+    </ClCompile>
+    <ClCompile Include="Font.cpp">
+      <Filter>Device</Filter>
+    </ClCompile>
+    <ClCompile Include="UIButton.cpp">
+      <Filter>Device</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="ReadMe.txt" />
+  </ItemGroup>
+</Project>

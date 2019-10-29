@@ -1,0 +1,196 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{5E7171A2-200C-40E9-9E47-07A2C551D89D}</ProjectGuid>
+    <RootNamespace>NetworkGame</RootNamespace>
+    <Keyword>Win32Proj</Keyword>
+    <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+    <ProjectName>HeroLegend</ProjectName>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <PlatformToolset>v142</PlatformToolset>
+    <CharacterSet>MultiByte</CharacterSet>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <PlatformToolset>v142</PlatformToolset>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>12.0.30501.0</_ProjectFileVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <OutDir>..\Bin\</OutDir>
+    <IntDir>$(Configuration)\</IntDir>
+    <LinkIncremental>true</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <OutDir>..\Bin\</OutDir>
+    <IntDir>$(Configuration)\</IntDir>
+    <LinkIncremental>false</LinkIncremental>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <Optimization>Disabled</Optimization>
+      <AdditionalIncludeDirectories>..\Library\OpenGLES\Include;..\GameEngine;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>_NO_CRT_SECURE_WARNINGS;WIN32;OPENGLES2;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MinimalRebuild>true</MinimalRebuild>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <PrecompiledHeader />
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
+    </ClCompile>
+    <Link>
+      <AdditionalDependencies>libGLESv2.lib;libEGL.lib;libPNG.lib;libZ.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>..\Library\OpenGLES\Lib;..\Library\LibPNG\Lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <SubSystem>Console</SubSystem>
+      <TargetMachine>MachineX86</TargetMachine>
+      <IgnoreSpecificDefaultLibraries>LIBCD.lib</IgnoreSpecificDefaultLibraries>
+      <ImageHasSafeExceptionHandlers>false</ImageHasSafeExceptionHandlers>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <Optimization>MaxSpeed</Optimization>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <AdditionalIncludeDirectories>..\Library\OpenGLES\Include;..\GameEngine;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>_NO_CRT_SECURE_WARNINGS;WIN32;OPENGLES2;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <PrecompiledHeader />
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+    </ClCompile>
+    <Link>
+      <AdditionalDependencies>libGLESv2.lib;libEGL.lib;libPNG.lib;libZ.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>..\Library\OpenGLES\Lib;..\Library\LibPNG\Lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <SubSystem>Console</SubSystem>
+      <OptimizeReferences>true</OptimizeReferences>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <TargetMachine>MachineX86</TargetMachine>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\GameEngine\GameEngine.vcxproj">
+      <Project>{db1c7efc-1a8e-4627-9a21-cf02b9c59454}</Project>
+      <CopyLocalSatelliteAssemblies>true</CopyLocalSatelliteAssemblies>
+      <ReferenceOutputAssembly>true</ReferenceOutputAssembly>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="AICharacter.cpp" />
+    <ClCompile Include="BackGroup.cpp" />
+    <ClCompile Include="CharacterManager.cpp" />
+    <ClCompile Include="Main.cpp" />
+    <ClCompile Include="Player.cpp" />
+    <ClCompile Include="SceneManager.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="AICharacter.h" />
+    <ClInclude Include="BackGroup.h" />
+    <ClInclude Include="CharacterManager.h" />
+    <ClInclude Include="Define.h" />
+    <ClInclude Include="Player.h" />
+    <ClInclude Include="SceneManager.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="..\Resources\Data\AIPut.png">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+    </Image>
+    <Image Include="..\Resources\Data\AI\BIG\player_full_11 (Custom).png" />
+    <Image Include="..\Resources\Data\AI\BIG\player_full_12 (Custom).png" />
+    <Image Include="..\Resources\Data\AI\BIG\player_full_13 (Custom).png" />
+    <Image Include="..\Resources\Data\AI\BIG\player_full_14 (Custom).png" />
+    <Image Include="..\Resources\Data\AI\BIG\player_full_15 (Custom).png" />
+    <Image Include="..\Resources\Data\AI\BIG\player_full_16 (Custom).png" />
+    <Image Include="..\Resources\Data\AI\BIG\player_full_17 (Custom).png" />
+    <Image Include="..\Resources\Data\AI\MEDIUM\player_full_11.png" />
+    <Image Include="..\Resources\Data\AI\MEDIUM\player_full_12.png" />
+    <Image Include="..\Resources\Data\AI\MEDIUM\player_full_13.png" />
+    <Image Include="..\Resources\Data\AI\MEDIUM\player_full_14.png" />
+    <Image Include="..\Resources\Data\AI\MEDIUM\player_full_15.png" />
+    <Image Include="..\Resources\Data\AI\MEDIUM\player_full_16.png" />
+    <Image Include="..\Resources\Data\AI\MEDIUM\player_full_17.png" />
+    <Image Include="..\Resources\Data\AI\SMALL\player_full_11.png" />
+    <Image Include="..\Resources\Data\AI\SMALL\player_full_12.png" />
+    <Image Include="..\Resources\Data\AI\SMALL\player_full_13.png" />
+    <Image Include="..\Resources\Data\AI\SMALL\player_full_14.png" />
+    <Image Include="..\Resources\Data\AI\SMALL\player_full_15.png" />
+    <Image Include="..\Resources\Data\AI\SMALL\player_full_16.png" />
+    <Image Include="..\Resources\Data\AI\SMALL\player_full_17.png" />
+    <Image Include="..\Resources\Data\Fonts\font.png" />
+    <Image Include="..\Resources\Data\Fonts\fontPolygon.png" />
+    <Image Include="..\Resources\Data\map.png">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+    </Image>
+    <Image Include="..\Resources\Data\PlayBttNormal.png">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+    </Image>
+    <Image Include="..\Resources\Data\PlayBttPressing.png">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+    </Image>
+    <Image Include="..\Resources\Data\PlayerPut.png">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+    </Image>
+    <Image Include="..\Resources\Data\Player\BIG\player_full_49 (Custom).png" />
+    <Image Include="..\Resources\Data\Player\BIG\player_full_50 (Custom).png" />
+    <Image Include="..\Resources\Data\Player\BIG\player_full_51 (Custom).png" />
+    <Image Include="..\Resources\Data\Player\BIG\player_full_52 (Custom).png" />
+    <Image Include="..\Resources\Data\Player\BIG\player_full_53 (Custom).png" />
+    <Image Include="..\Resources\Data\Player\BIG\player_full_54 (Custom).png" />
+    <Image Include="..\Resources\Data\Player\BIG\player_full_55 (Custom).png" />
+    <Image Include="..\Resources\Data\Player\BIG\player_full_56 (Custom).png" />
+    <Image Include="..\Resources\Data\Player\MEDIUM\player_full_49.png" />
+    <Image Include="..\Resources\Data\Player\MEDIUM\player_full_50.png" />
+    <Image Include="..\Resources\Data\Player\MEDIUM\player_full_51.png" />
+    <Image Include="..\Resources\Data\Player\MEDIUM\player_full_52.png" />
+    <Image Include="..\Resources\Data\Player\MEDIUM\player_full_53.png" />
+    <Image Include="..\Resources\Data\Player\MEDIUM\player_full_54.png" />
+    <Image Include="..\Resources\Data\Player\MEDIUM\player_full_55.png" />
+    <Image Include="..\Resources\Data\Player\MEDIUM\player_full_56.png" />
+    <Image Include="..\Resources\Data\Player\SMALL\player_full_49.png" />
+    <Image Include="..\Resources\Data\Player\SMALL\player_full_50.png" />
+    <Image Include="..\Resources\Data\Player\SMALL\player_full_51.png" />
+    <Image Include="..\Resources\Data\Player\SMALL\player_full_52.png" />
+    <Image Include="..\Resources\Data\Player\SMALL\player_full_53.png" />
+    <Image Include="..\Resources\Data\Player\SMALL\player_full_54.png" />
+    <Image Include="..\Resources\Data\Player\SMALL\player_full_55.png" />
+    <Image Include="..\Resources\Data\Player\SMALL\player_full_56.png" />
+    <Image Include="..\Resources\Data\Powerup.png">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+    </Image>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\Resources\Data\Fonts\font.fnt" />
+    <None Include="..\Resources\Data\Fonts\fontPolygon.fnt" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>
