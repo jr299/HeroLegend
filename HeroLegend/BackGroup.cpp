@@ -54,26 +54,29 @@ float BackGroup::GetPlayerPutValue()
 
 void BackGroup::Update(float deltaTime)
 {
-	if (m_AIPutValue <= CHARACTER_PUT_WIDTH)
+	m_graphics->FillRect((m_backGroup->GetWidth() - CHARACTER_PUT_WIDTH) / 2,
+		AI_PUT_POSY, m_AIPutValue, CHARACTER_PUT_HEIGHT);
+	if (m_AIPutValue <= CHARACTER_PUT_WIDTH )
 	{
 		m_AIPutValue += deltaTime * 10;
-		m_graphics->FillRect((m_backGroup->GetWidth() - CHARACTER_PUT_WIDTH) / 2,
-			AI_PUT_POSY, m_AIPutValue, CHARACTER_PUT_HEIGHT);
 	}
 	else
 	{
 		m_AIPutValue = 0;
 	}
-
-	if (m_playerPutValue <= CHARACTER_PUT_WIDTH)
+	
+	m_graphics->FillRect((m_backGroup->GetWidth() - CHARACTER_PUT_WIDTH) / 2,
+		PLAYER_PUT_POS_Y, m_playerPutValue, CHARACTER_PUT_HEIGHT);
+	if (SceneManager::GetInstance()->CanCreatePlayerAnim())
 	{
-		m_playerPutValue += deltaTime * 10;
-		m_graphics->FillRect((m_backGroup->GetWidth() - CHARACTER_PUT_WIDTH) / 2,
-			PLAYER_PUT_POS_Y, m_playerPutValue, CHARACTER_PUT_HEIGHT);
-	}
-	else
-	{
-		m_playerPutValue = 0;
+		if (m_playerPutValue <= CHARACTER_PUT_WIDTH)
+		{
+			m_playerPutValue += deltaTime * 10;
+		}
+		else
+		{
+			m_playerPutValue = 0;
+		}
 	}
 }
 

@@ -29,7 +29,8 @@ public:
 	float GetCharacterMass();
 	void SetAnimation(gamerize::Animation* m_anim);
 	gamerize::Animation* GetAnimation();
-	
+	void EnableRunForCharacter(bool canRun);
+	bool IsCharacterCanRun();
 private:
 	Vector2 *m_positionCharacter;
 	Image* m_characterImage;
@@ -39,5 +40,6 @@ private:
 	int m_point;
 	gamerize::Animation *m_animation;
 	bool m_playerCanCreate;
+	bool m_canRun;
 };
 #endif

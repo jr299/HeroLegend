@@ -20,9 +20,10 @@ SceneManager::SceneManager()
 	m_PlayerId(""),
 	m_backGroup(NULL),
 	m_postison((0, 0)),
-	m_AIRunPosX(0),
-	m_playerRunPosX(0),
+	m_AIRunPosXFollowAISizeInEachTrack(0),
+	m_playerRunPosXFollowAISizeInEachTrack(0),
 	m_AIRandom(0),
+	m_AIRandomPosX(0),
 	m_playerRandom(0),
 	m_AITitlePosX(0),
 	m_AITitlePosY(0),
@@ -40,9 +41,8 @@ SceneManager::SceneManager()
 	m_listSmallPlayerImage(NULL),
 	m_listMediumPlayerImage(NULL),
 	m_canCreatePlayerAnim(true)
-	//m_instance(NULL)
 {
-	
+
 }
 
 void SceneManager::Init(Graphics* graphics)
@@ -51,12 +51,13 @@ void SceneManager::Init(Graphics* graphics)
 	CreateListCharacterImage();
 
 	srand((unsigned int)time(0));
+
 	RandomAIValue();
 	RandomPlayerValue();
-	
+
 	m_backGroup = new BackGroup();
 	m_backGroup->Init(MAP_NAME, AI_PUT_NAME, PLAYER_PUT_NAME, new Vector2(0, 0), graphics);
-	
+
 	CreateAITitle();
 	CreatePlayerTitle();
 	m_instance = this;
@@ -64,12 +65,12 @@ void SceneManager::Init(Graphics* graphics)
 
 void SceneManager::Update(float deltaTime)
 {
-
-	if (m_backGroup->GetAIPutValue() == 0)
+	m_backGroup->Update(deltaTime);
+	if (m_backGroup->GetAIPutValue() >= 60)
 	{
 		if (m_AITitle != nullptr)
 		{
-			AICharacter* AIRun = new AICharacter(m_AIId + to_string(AI_FIRST_NUMBER), new Vector2(m_AIRunPosX, AI_POS_Y), m_characterMass);
+			AICharacter* AIRun = new AICharacter(m_AIId + to_string(AI_FIRST_NUMBER), new Vector2(m_AIRunPosXFollowAISizeInEachTrack - m_AITitle->GetCharacterImage()->GetWidth() / 2, AI_POS_Y), m_characterMass);
 			CreateAIAnimation(AIRun);
 			m_listAI.push_back(AIRun);
 
@@ -77,21 +78,98 @@ void SceneManager::Update(float deltaTime)
 			delete m_AITitle;
 			CreateAITitle();
 		}
+	}
 
+	if (m_backGroup->GetPlayerPutValue() >= 60)
+	{
 		if (m_playerTitle != nullptr && m_canCreatePlayerAnim)
 		{
-			Player* playerRun = new Player(m_PlayerId + to_string(PLAYER_FIRST_NUMBER), new Vector2(m_playerRunPosX, PLAYER_POS_Y), m_characterMass);
+			Player* playerRun = new Player(m_PlayerId + to_string(PLAYER_FIRST_NUMBER), new Vector2(m_playerRunPosXFollowAISizeInEachTrack, PLAYER_POS_Y), m_characterMass);
 			CreatePlayerAnimation(playerRun);
 			m_listPlayer.push_back(playerRun);
 
 			RandomPlayerValue();
-			delete m_playerTitle;
-			CreatePlayerTitle();
 			m_canCreatePlayerAnim = false;
 		}
 	}
-	m_backGroup->Update(deltaTime);
 
+
+}
+
+void SceneManager::OnEvent(TouchData *touchData)
+{
+	float touchPosX = touchData->position.x;
+	if (CanRun(&(touchData->position)) && m_listPlayer.size() > 0)
+	{
+		if (!m_canCreatePlayerAnim)
+		{
+			if (touchPosX <= 180)
+			{
+				m_playerRunPosXFollowAISizeInEachTrack = TRACK_1_POS_X;
+			}
+			else if (touchPosX <= 310)
+			{
+				m_playerRunPosXFollowAISizeInEachTrack = TRACK_2_POS_X;
+			}
+			else
+			{
+				m_playerRunPosXFollowAISizeInEachTrack = TRACK_3_POS_X;
+			}
+			m_listPlayer[m_listPlayer.size() - 1]->SetPosition(new Vector2(m_playerRunPosXFollowAISizeInEachTrack - m_playerTitle->GetCharacterImage()->GetWidth() / 2, m_listPlayer[m_listPlayer.size() - 1]->GetPosYCharacter()));
+			m_listPlayer[m_listPlayer.size() - 1]->EnableRunForCharacter(true);
+			CreatePlayerTitle();
+		}
+		m_canCreatePlayerAnim = true;
+	}
+
+}
+
+void SceneManager::Render()
+{
+
+	if (m_backGroup != nullptr)
+	{
+		m_backGroup->Render(m_graphics);
+	}
+
+	if (m_AITitle != nullptr)
+	{
+		m_AITitle->Render(m_graphics);
+	}
+
+	if (m_playerTitle != nullptr)
+	{
+		m_playerTitle->Render(m_graphics);
+	}
+
+	for (size_t i = 0; i < m_listAI.size(); i++)
+	{
+		m_listAI[i]->Move(m_listAI[i]->GetPosition(), 0.3f);
+		m_listAI[i]->RenderAnimation(m_graphics, m_listAI[i]->GetAnimation(), (int)SCREEN_HEIGHT / 7);
+		if (m_listAI[i]->GetPosYCharacter() > PLAYER_POS_Y)
+		{
+			printf("m_listAI size before erase : %d \n", m_listAI.size());
+			m_listAI.erase(m_listAI.begin() + i);
+			printf("m_listAI Size after erase: %d \n", m_listAI.size());
+			m_AINumberToFinish++;
+		}
+	}
+
+	for (size_t i = 0; i < m_listPlayer.size(); i++)
+	{
+		if (m_listPlayer[i]->IsCharacterCanRun())
+		{
+			m_listPlayer[i]->Move(m_listPlayer[i]->GetPosition(), -0.3f);
+			m_listPlayer[i]->RenderAnimation(m_graphics, m_listPlayer[i]->GetAnimation(), (int)SCREEN_HEIGHT / 7);
+			if (m_listPlayer[i]->GetPosYCharacter() < AI_POS_Y)
+			{
+				printf("m_listPlayer size before erase : %d \n", m_listPlayer.size());
+				m_listPlayer.erase(m_listPlayer.begin() + i);
+				printf("m_listPlayer Size after erase: %d \n", m_listPlayer.size());
+				m_PlayerNumberToFinish++;
+			}
+		}
+	}
 }
 
 void SceneManager::CreateAIAnimation(AICharacter* AI)
@@ -139,55 +217,10 @@ void SceneManager::CreateAITitle()
 
 void SceneManager::CreatePlayerTitle()
 {
+	delete m_playerTitle;
 	m_playerTitle = new Player(m_PlayerId + to_string(PLAYER_FIRST_NUMBER), new Vector2(-100, 100), m_characterMass);
 	m_playerTitlePosX = (m_backGroup->GetPlayerPutImage()->GetWidth() - m_playerTitle->GetCharacterImage()->GetWidth()) / 2;
 	m_playerTitle->SetPosition(new Vector2(m_playerTitlePosX, PLAYER_TITLE_POS_Y));
-}
-
-void SceneManager::Render()
-{
-
-	if (m_backGroup != nullptr)
-	{
-		m_backGroup->Render(m_graphics);
-	}
-
-	if (m_AITitle != nullptr)
-	{
-		m_AITitle->Render(m_graphics);
-	}
-
-	if (m_playerTitle != nullptr)
-	{
-		m_playerTitle->Render(m_graphics);
-	}
-
-	for (size_t i = 0; i < m_listAI.size(); i++)
-	{
-		m_listAI[i]->Move(m_listAI[i]->GetPosition(), 0.3f);
-		m_listAI[i]->RenderAnimation(m_graphics, m_listAI[i]->GetAnimation(), (int)SCREEN_HEIGHT / 7);
-		if (m_listAI[i]->GetPosYCharacter() > PLAYER_POS_Y)
-		{
-			printf("m_listAI size before erase : %d \n", m_listAI.size());
-			m_listAI.erase(m_listAI.begin() + i);
-			printf("m_listAI Size after erase: %d \n", m_listAI.size());
-			m_AINumberToFinish ++;
-		}
-	}
-
-	for (size_t i = 0; i < m_listPlayer.size(); i++)
-	{
-		m_listPlayer[i]->Move(m_listPlayer[i]->GetPosition(), - 0.3f);
-		m_listPlayer[i]->RenderAnimation(m_graphics, m_listPlayer[i]->GetAnimation(), (int)SCREEN_HEIGHT / 7);
-		if (m_listPlayer[i]->GetPosYCharacter() < AI_POS_Y)
-		{
-			printf("m_listPlayer size before erase : %d \n", m_listPlayer.size());
-			m_listPlayer.erase(m_listPlayer.begin() + i);
-			printf("m_listPlayer Size after erase: %d \n", m_listPlayer.size());
-			m_PlayerNumberToFinish ++;
-		}
-	}
-
 }
 
 bool SceneManager::CharacterCollison(AICharacter* AI, Player* player)
@@ -204,22 +237,35 @@ bool SceneManager::CharacterCollison(AICharacter* AI, Player* player)
 void SceneManager::RandomAIValue()
 {
 	m_AIRandom = 1 + rand() % 3;
+	m_AIRandomPosX = 1 + rand() % 3;
 	switch (m_AIRandom)
 	{
 	case 1:
 		m_AIId = SMALL_AI_PATH;
-		m_AIRunPosX = SMALL_CHARACTER_POS_X;
 		m_characterMass = SMALL_CHARACTER_MASS;
 		break;
 	case 2:
 		m_AIId = MEDIUM_AI_PATH;
-		m_AIRunPosX = MEDIUM_CHARACTER_POS_X;
 		m_characterMass = MEDIUM_CHARACTER_MASS;
 		break;
 	case 3:
 		m_AIId = BIG_AI_PATH;
-		m_AIRunPosX = BIG_CHARACTER_POS_X;
 		m_characterMass = BIG_CHARACTER_MASS;
+		break;
+	default:
+		break;
+	}
+
+	switch (m_AIRandomPosX)
+	{
+	case 1:
+		m_AIRunPosXFollowAISizeInEachTrack = TRACK_1_POS_X;
+		break;
+	case 2:
+		m_AIRunPosXFollowAISizeInEachTrack = TRACK_2_POS_X;
+		break;
+	case 3:
+		m_AIRunPosXFollowAISizeInEachTrack = TRACK_3_POS_X;
 		break;
 	default:
 		break;
@@ -233,17 +279,14 @@ void SceneManager::RandomPlayerValue()
 	{
 	case 1:
 		m_PlayerId = SMALL_PLAYER_PATH;
-		m_playerRunPosX = SMALL_CHARACTER_POS_X;
 		m_characterMass = SMALL_CHARACTER_MASS;
 		break;
 	case 2:
 		m_PlayerId = MEDIUM_PLAYER_PATH;
-		m_playerRunPosX = MEDIUM_CHARACTER_POS_X;
 		m_characterMass = MEDIUM_CHARACTER_MASS;
 		break;
 	case 3:
 		m_PlayerId = BIG_PLAYER_PATH;
-		m_playerRunPosX = BIG_CHARACTER_POS_X;
 		m_characterMass = BIG_CHARACTER_MASS;
 		break;
 	default:
@@ -266,5 +309,20 @@ void SceneManager::CreateListCharacterImage()
 		m_listMediumPlayerImage.push_back(new Image((MEDIUM_PLAYER_PATH + to_string(i) + IMAGE_TYPE).c_str()));
 		m_listBigPlayerImage.push_back(new Image((BIG_PLAYER_PATH + to_string(i) + IMAGE_TYPE).c_str()));
 	}
+}
+
+bool SceneManager::CanCreatePlayerAnim()
+{
+	return m_canCreatePlayerAnim;
+}
+
+bool SceneManager::CanRun(Vector2 *pos)
+{
+	bool canRun = true;
+	if (!(pos->x >= 0 && pos->x <= SCREEN_WIDTH && pos->y >= 0 && pos->y <= SCREEN_HEIGHT))
+	{
+		canRun = false;
+	}
+	return canRun;
 }
 
