@@ -71,7 +71,7 @@ void BackGroup::Update(float deltaTime)
 	{
 		if (m_playerPutValue <= CHARACTER_PUT_WIDTH)
 		{
-			m_playerPutValue += deltaTime * 10;
+			m_playerPutValue += deltaTime * 100;
 		}
 		else
 		{

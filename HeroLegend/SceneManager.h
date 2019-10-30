@@ -30,7 +30,8 @@ public:
 	static SceneManager* GetInstance();
 	bool CanCreatePlayerAnim();
 	bool CanRun(Vector2 *pos);
-
+	int BlockAITrack();
+	int BlockPlayerTrack();
 private:
 	
 	Graphics* m_graphics;

@@ -46,7 +46,7 @@ Image* CharacterManager::GetCharacterImage()
 void CharacterManager::SetCharacterImage(string fileName)
 {
 	delete m_characterImage;
-	m_characterImage = new Image((fileName + "1.png").c_str());
+	m_characterImage = new Image(fileName.c_str());
 }
 
 void CharacterManager::SetPosition(Vector2 *characterPosition)
@@ -118,5 +118,7 @@ bool CharacterManager::IsCharacterCanRun()
 
 CharacterManager::~CharacterManager()
 {
-
+	m_animation = NULL;
+	m_positionCharacter = NULL;
+	m_characterImage = NULL;
 }
