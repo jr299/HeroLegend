@@ -12,7 +12,8 @@ CharacterManager::CharacterManager(string fileName, Vector2 *pos, float mass = 2
 	:m_positionCharacter(pos),
 	m_mass(mass),
 	m_point(0),
-	m_playerCanCreate(true)
+	m_playerCanCreate(true),
+	m_canRun(false)
 {
 	m_characterImage = new Image((fileName + IMAGE_TYPE).c_str());
 }
@@ -103,6 +104,16 @@ gamerize::Animation* CharacterManager::GetAnimation()
 float CharacterManager::GetCharacterMass()
 {
 	return m_mass;
+}
+
+void CharacterManager::EnableRunForCharacter(bool canRun)
+{
+	m_canRun = canRun;
+}
+
+bool CharacterManager::IsCharacterCanRun()
+{
+	return m_canRun;
 }
 
 CharacterManager::~CharacterManager()

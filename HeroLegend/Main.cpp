@@ -29,11 +29,12 @@ int main()
 
 		TouchData *touchData = inputManager->GetTouch();
 		if (touchData != NULL
-			&& (touchData->state == TOUCH_DOWN || touchData->state == TOUCH_MOVE)
+			&& (touchData->state == TOUCH_UP)
 			)
 		{
 			// handle touch
 			Logger::Debug("Touch::", "Touch state: %d x: %f y: %f", touchData->state, touchData->position.x, touchData->position.y);
+			scene->OnEvent(touchData);
 		}
 		//Update
 

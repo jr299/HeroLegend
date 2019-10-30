@@ -26,7 +26,10 @@ public:
 	void RandomPlayerValue();
 	void CreateAITitle();
 	void CreatePlayerTitle();
+	void OnEvent(TouchData *touchData);
 	static SceneManager* GetInstance();
+	bool CanCreatePlayerAnim();
+	bool CanRun(Vector2 *pos);
 
 private:
 	
@@ -36,9 +39,10 @@ private:
 	Vector2* m_postison;
 	vector<AICharacter*> m_listAI;
 	vector<Player*> m_listPlayer;
-	float m_AIRunPosX;
-	float m_playerRunPosX;
+	float m_AIRunPosXFollowAISizeInEachTrack;
+	float m_playerRunPosXFollowAISizeInEachTrack;
 	int m_AIRandom;
+	int m_AIRandomPosX;
 	int m_playerRandom;
 	int m_AITitlePosX;
 	int m_AITitlePosY;
@@ -56,7 +60,8 @@ private:
 	list<Image*> m_listMediumPlayerImage;
 	list<Image*> m_listBigPlayerImage;
 	bool m_canCreatePlayerAnim;
-	
+	int m_playerIndex;
+	vector<int*> m_listTouch;
 };
 
 #endif
