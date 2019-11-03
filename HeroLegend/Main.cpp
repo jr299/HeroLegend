@@ -19,7 +19,7 @@ int main()
 	InputManager *inputManager = InputManager::GetInstance(); 
 
 	SceneManager* scene = SceneManager::GetInstance();
-	scene->Init(graphics);
+	scene->Init();
 	// Game Loop
 	while (device->IsRunning())
 	{

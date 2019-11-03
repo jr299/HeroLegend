@@ -1,19 +1,17 @@
 #include "CharacterManager.h"
 CharacterManager::CharacterManager()
-	:m_positionCharacter((0, 0)),
-	m_characterImage(NULL),
-	m_animation(NULL),
-	m_playerCanCreate(true)
 {
 
 }
 
-CharacterManager::CharacterManager(string fileName, Vector2 *pos, float mass = 2)
+CharacterManager::CharacterManager(string fileName, Vector2 *pos, int trackNumber, float mass = 2)
 	:m_positionCharacter(pos),
 	m_mass(mass),
 	m_point(0),
 	m_playerCanCreate(true),
-	m_canRun(false)
+	m_canRun(false),
+	m_trackNumber(trackNumber),
+	m_animation(NULL)
 {
 	m_characterImage = new Image((fileName + IMAGE_TYPE).c_str());
 }
@@ -45,8 +43,7 @@ Image* CharacterManager::GetCharacterImage()
 
 void CharacterManager::SetCharacterImage(string fileName)
 {
-	delete m_characterImage;
-	m_characterImage = new Image(fileName.c_str());
+	m_characterImage->Load((fileName + IMAGE_TYPE).c_str());
 }
 
 void CharacterManager::SetPosition(Vector2 *characterPosition)
@@ -61,19 +58,23 @@ Vector2* CharacterManager::GetPosition()
 
 void CharacterManager::Move(Vector2 *m_characte, float posY)
 {
+	//m_door.lock();
 	m_characte->y += posY;
+	//m_door.unlock();
 }
 
-void CharacterManager::Render(Graphics *graphics)
+void CharacterManager::Render()
 {
-	graphics->DrawImage(m_characterImage, m_positionCharacter->x, m_positionCharacter->y, 0);
+	Device::GetInstance()->GetGraphics()->DrawImage(m_characterImage, m_positionCharacter->x, m_positionCharacter->y, 0);
 }
 
-void CharacterManager::RenderAnimation(Graphics* graphics, gamerize::Animation* anim, int loop)
+void CharacterManager::RenderAnimation(gamerize::Animation* anim, int loop)
 {
+	//m_door.lock();
 	anim->SetLoop(loop);
 	anim->SetEnableAnimation(true);
-	graphics->DrawAnimation(anim, m_positionCharacter->x, m_positionCharacter->y, 0);
+	Device::GetInstance()->GetGraphics()->DrawAnimation(anim, m_positionCharacter->x, m_positionCharacter->y, 0);
+	//m_door.unlock();
 }
 
 void CharacterManager::SetName(string name)
@@ -111,9 +112,14 @@ void CharacterManager::EnableRunForCharacter(bool canRun)
 	m_canRun = canRun;
 }
 
-bool CharacterManager::IsCharacterCanRun()
+bool CharacterManager::DoCharacterRun()
 {
 	return m_canRun;
+}
+
+int CharacterManager::GetTrackNumber()
+{
+	return m_trackNumber;
 }
 
 CharacterManager::~CharacterManager()

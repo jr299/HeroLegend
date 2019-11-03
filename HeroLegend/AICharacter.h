@@ -6,7 +6,7 @@ class AICharacter : public CharacterManager
 {
 public:
 	AICharacter();
-	AICharacter(string fileName, Vector2 *pos, float mass);
+	AICharacter(string fileName, Vector2 *pos, int trackNumber, float mass);
 	void Walking();
 };
 #endif

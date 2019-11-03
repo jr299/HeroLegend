@@ -4,21 +4,22 @@
 #include "Define.h"
 #include <GameEngine.h>
 #include <string>
+#include <mutex>
 using namespace std;
 
 class CharacterManager
 {
 public:
 	CharacterManager();
-	CharacterManager(string fileName, Vector2 *pos, float mass);
+	CharacterManager(string fileName, Vector2 *pos, int trackNumber, float mass);
 	~ CharacterManager();
 	Image* GetCharacterImage();
 	void CreateAnimation(list<Image*> list);
 	void SetCharacterImage(string fileName);
 	void SetPosition(Vector2 *characterPosition);
 	Vector2* GetPosition();
-	void Render(Graphics* graphics);
-	void RenderAnimation(Graphics* graphics, gamerize::Animation* anim, int loop);
+	void Render();
+	void RenderAnimation(gamerize::Animation* anim, int loop);
 	void Move(Vector2* m_characte, float posY);
 	float GetPosYCharacter();
 	float GetPosXCharacter();
@@ -30,7 +31,9 @@ public:
 	void SetAnimation(gamerize::Animation* m_anim);
 	gamerize::Animation* GetAnimation();
 	void EnableRunForCharacter(bool canRun);
-	bool IsCharacterCanRun();
+	bool DoCharacterRun();
+	void SetTrackNumber(int trackNumber);
+	int GetTrackNumber();
 private:
 	Vector2 *m_positionCharacter;
 	Image* m_characterImage;
@@ -41,5 +44,8 @@ private:
 	gamerize::Animation *m_animation;
 	bool m_playerCanCreate;
 	bool m_canRun;
+	mutex m_door;
+	Graphics* m_graphics;
+	int m_trackNumber;
 };
 #endif

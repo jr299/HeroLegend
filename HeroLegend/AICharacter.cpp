@@ -4,7 +4,7 @@ AICharacter::AICharacter()
 
 }
 
-AICharacter::AICharacter(string fileName, Vector2 *pos, float mass) :CharacterManager(fileName, pos, mass)
+AICharacter::AICharacter(string fileName, Vector2 *pos, int trackNumber, float mass) :CharacterManager(fileName, pos, trackNumber, mass)
 {
 
 }

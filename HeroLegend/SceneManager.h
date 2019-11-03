@@ -5,6 +5,7 @@
 #include "Player.h"
 #include "BackGroup.h"
 #include <vector>
+#include<thread>
 
 class SceneManager
 {
@@ -14,13 +15,13 @@ private:
 
 public:
 	
-	void Init(Graphics *graphics);
+	void Init();
 	void Render();
 	void CreateAIAnimation(AICharacter* AI);
 	void CreatePlayerAnimation(Player* AI);
 	void CreateListCharacterImage();
 	void Update(float deltaTime);
-	bool CharacterCollison(AICharacter *AI, Player *player);
+	bool IsCollison(AICharacter *AI, Player *player);
 	BackGroup* m_backGroup;
 	void RandomAIValue();
 	void RandomPlayerValue();
@@ -32,16 +33,46 @@ public:
 	bool CanRun(Vector2 *pos);
 	int BlockAITrack();
 	int BlockPlayerTrack();
+	void RenderAITitleThread();
+	void RenderPlayerTitleThread();
+	void RenderAIAnimThread();
+	void RenderPlayerAnimThread();
+	void CreateAIListImage(bool ad);
+	void CreatePlayerListImage();
+	bool CheckCollisionAI(vector<AICharacter*> list);
+	bool CheckCollisionPlayer(vector<Player*> list);
+	bool CheckCollisionOnTrack1();
+	bool CheckCollisionOnTrack2();
+	bool CheckCollisionOnTrack3();
+	void RenderCharacterOnEachTrack(int trackNumber);
+	void RenderTrack(vector<AICharacter*> m_listAI, vector<Player*> m_listPlayer, int m_listAIMass, int m_listPlayerMass);
+
+public:
+	vector<AICharacter*> m_listAI;
+	vector<AICharacter*> m_listAIOnTrack1;
+	vector<AICharacter*> m_listAIOnTrack2;
+	vector<AICharacter*> m_listAIOnTrack3;
+	int m_listAIMassTrack1;
+	int m_listAIMassTrack2;
+	int m_listAIMassTrack3;
+	int m_listPlayerMassTrack1;
+	int m_listPlayerMassTrack2;
+	int m_listPlayerMassTrack3;
 private:
 	
 	Graphics* m_graphics;
 	string m_AIId;
 	string m_PlayerId;
 	Vector2* m_postison;
-	vector<AICharacter*> m_listAI;
+	
 	vector<Player*> m_listPlayer;
+	vector<Player*> m_listPlayerOnTrack1;
+	vector<Player*> m_listPlayerOnTrack3;
+	vector<Player*> m_listPlayerOnTrack2;
 	float m_AIRunPosXFollowAISizeInEachTrack;
 	float m_playerRunPosXFollowAISizeInEachTrack;
+	int m_AIOnTrack;
+	int m_PlyerOnTrack;
 	int m_AIRandom;
 	int m_AIRandomPosX;
 	int m_playerRandom;
@@ -63,6 +94,7 @@ private:
 	bool m_canCreatePlayerAnim;
 	int m_playerIndex;
 	vector<int*> m_listTouch;
+	mutex m_door;
 };
 
 #endif

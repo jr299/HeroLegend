@@ -6,16 +6,14 @@ BackGroup::BackGroup()
 	m_playerPut(NULL),
 	m_position((0, 0)),
 	m_AIPutValue(0.1),
-	m_playerPutValue(0),
-	m_graphics(NULL)
+	m_playerPutValue(0)
 {
 
 }
 
-void BackGroup::Init(string fileName, string AIPutId, string playerPutID, Vector2* pos, Graphics *graphics)
+void BackGroup::Init(string fileName, string AIPutId, string playerPutID, Vector2* pos)
 {
 	m_position = pos;
-	m_graphics = graphics;
 	m_backGroup = new Image(fileName.c_str());
 	m_AIPut = new Image(AIPutId.c_str());
 	m_playerPut = new Image(playerPutID.c_str());
@@ -54,7 +52,7 @@ float BackGroup::GetPlayerPutValue()
 
 void BackGroup::Update(float deltaTime)
 {
-	m_graphics->FillRect((m_backGroup->GetWidth() - CHARACTER_PUT_WIDTH) / 2,
+	Device::GetInstance()->GetGraphics()->FillRect((m_backGroup->GetWidth() - CHARACTER_PUT_WIDTH) / 2,
 		AI_PUT_POSY, m_AIPutValue, CHARACTER_PUT_HEIGHT);
 	if (m_AIPutValue <= CHARACTER_PUT_WIDTH )
 	{
@@ -65,7 +63,7 @@ void BackGroup::Update(float deltaTime)
 		m_AIPutValue = 0;
 	}
 	
-	m_graphics->FillRect((m_backGroup->GetWidth() - CHARACTER_PUT_WIDTH) / 2,
+	Device::GetInstance()->GetGraphics()->FillRect((m_backGroup->GetWidth() - CHARACTER_PUT_WIDTH) / 2,
 		PLAYER_PUT_POS_Y, m_playerPutValue, CHARACTER_PUT_HEIGHT);
 	if (SceneManager::GetInstance()->CanCreatePlayerAnim())
 	{
@@ -80,13 +78,13 @@ void BackGroup::Update(float deltaTime)
 	}
 }
 
-void BackGroup::Render(Graphics* graphics)
+void BackGroup::Render()
 {
-	graphics->DrawImage(m_backGroup, m_position->x, m_position->y, 0);
-	graphics->DrawImage(m_AIPut, m_position->x, m_position->y, 0);
-	graphics->DrawImage(m_playerPut, m_position->x, 700, 0);
-	graphics->DrawRect((m_backGroup->GetWidth() - CHARACTER_PUT_WIDTH) / 2, AI_PUT_POSY, CHARACTER_PUT_WIDTH, CHARACTER_PUT_HEIGHT);
-	graphics->DrawRect((m_backGroup->GetWidth() - CHARACTER_PUT_WIDTH) / 2, PLAYER_PUT_POS_Y, CHARACTER_PUT_WIDTH, CHARACTER_PUT_HEIGHT);
+	Device::GetInstance()->GetGraphics()->DrawImage(m_backGroup, m_position->x, m_position->y, 0);
+	Device::GetInstance()->GetGraphics()->DrawImage(m_AIPut, m_position->x, m_position->y, 0);
+	Device::GetInstance()->GetGraphics()->DrawImage(m_playerPut, m_position->x, 700, 0);
+	Device::GetInstance()->GetGraphics()->DrawRect((m_backGroup->GetWidth() - CHARACTER_PUT_WIDTH) / 2, AI_PUT_POSY, CHARACTER_PUT_WIDTH, CHARACTER_PUT_HEIGHT);
+	Device::GetInstance()->GetGraphics()->DrawRect((m_backGroup->GetWidth() - CHARACTER_PUT_WIDTH) / 2, PLAYER_PUT_POS_Y, CHARACTER_PUT_WIDTH, CHARACTER_PUT_HEIGHT);
 	
 }
 

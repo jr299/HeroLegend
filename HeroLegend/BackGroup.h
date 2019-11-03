@@ -10,8 +10,8 @@ class BackGroup
 {
 public:
 	BackGroup();
-	void Init(string fileName, string AIPutId, string playerPutID, Vector2* pos, Graphics *graphics);
-	void Render(Graphics *graphics);
+	void Init(string fileName, string AIPutId, string playerPutID, Vector2* pos);
+	void Render();
 	Image* GetAIPutImage();
 	Image* GetPlayerPutImage();
 	void SetPosition(Vector2* pos);
@@ -26,7 +26,6 @@ private:
 	Vector2* m_position;
 	float m_AIPutValue;
 	float m_playerPutValue;
-	Graphics* m_graphics;
 };
 
 #endif // !
